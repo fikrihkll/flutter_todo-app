@@ -7,7 +7,6 @@ class DeleteTodoUsecase implements UseCase<void, DeleteTodoUsecaseParams>{
 
   final TodoRepository repository;
 
-
   DeleteTodoUsecase({required this.repository});
 
   @override

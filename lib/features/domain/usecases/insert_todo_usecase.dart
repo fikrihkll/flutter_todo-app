@@ -7,6 +7,7 @@ import 'package:todo_app/features/domain/repositories/todo_repository.dart';
 class InsertTodoUsecase implements UseCase<int, InsertTodoUsecaseParams>{
 
   final TodoRepository repository;
+
   InsertTodoUsecase({required this.repository});
 
   @override

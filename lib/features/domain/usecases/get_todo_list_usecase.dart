@@ -8,7 +8,6 @@ class GetTodoListUsecase implements UseCase<List<Todo>, NoParams>{
 
   final TodoRepository repository;
 
-
   GetTodoListUsecase({required this.repository});
 
   @override
