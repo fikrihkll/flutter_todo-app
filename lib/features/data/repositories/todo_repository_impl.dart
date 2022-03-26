@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:todo_app/core/error/failure.dart';
 import 'package:todo_app/features/data/datasources/local_data_source.dart';
 import 'package:todo_app/features/data/models/todo_model.dart';
@@ -44,6 +45,7 @@ class TodoRepositoryImpl implements TodoRepository{
     }on CacheFailure catch(e){
       return Left(CacheFailure(e.message));
     }catch(e){
+      debugPrint(e.toString());
       return Left(UnexpectedFailure(e.toString()));
     }
   }
@@ -56,6 +58,7 @@ class TodoRepositoryImpl implements TodoRepository{
     }on CacheFailure catch(e){
       return Left(CacheFailure(e.message));
     }catch(e){
+      debugPrint(e.toString());
       return Left(UnexpectedFailure(e.toString()));
     }
   }

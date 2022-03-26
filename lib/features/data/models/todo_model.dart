@@ -1,7 +1,7 @@
 import 'package:todo_app/features/domain/entities/todo.dart';
 
 class TodoModel extends Todo{
-  final int id;
+  int id;
   String title;
   String description;
   String date;
@@ -33,11 +33,11 @@ class TodoModel extends Todo{
 
   static Map<String, dynamic> toMap(TodoModel model){
     return {
-      'id': model.id,
+      'id': model.id <= 0 ? null : model.id,
       'title': model.title,
       'desc': model.description,
       'date': model.date,
-      'has_done': model.hasDone
+      'has_done': model.hasDone ? 1 : 0
     };
   }
 }

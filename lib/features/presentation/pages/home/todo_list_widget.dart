@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/core/util/date_util.dart';
+import 'package:todo_app/features/domain/entities/todo.dart';
 
 class TodoListWidget extends StatefulWidget {
-  const TodoListWidget({Key? key}) : super(key: key);
+
+  final Todo todo;
+  final Function onItemClicked;
+  final Function onCheckboxChanged;
+
+  const TodoListWidget({Key? key, required this.todo, required this.onItemClicked, required this.onCheckboxChanged}) : super(key: key);
 
   @override
   State<TodoListWidget> createState() => _TodoListWidgetState();
@@ -24,27 +31,39 @@ class _TodoListWidgetState extends State<TodoListWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Checkbox(value: false, onChanged: (newValue){
-
+          Checkbox(value: widget.todo.hasDone, onChanged: (newValue){
+            widget.onCheckboxChanged(newValue);
+            setState(() {
+              widget.todo.hasDone = !widget.todo.hasDone;
+            });
           }),
           Expanded(
               child: GestureDetector(
+                onTap: (){
+                  widget.onItemClicked(widget.todo);
+                },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('20 Oct 2022', style: _theme.textTheme.subtitle1,),
+                    // -------------------------- Date
+                    Text(dateFormat.format(ymdFormat.parse(widget.todo.date)), style: _theme.textTheme.subtitle1,),
+                    // -------------------------- Date
                     const SizedBox(height: 8,),
+                    // -------------------------- Title
                     Text(
-                      'Hello',
+                      widget.todo.title,
                       style: _theme.textTheme.headline4,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    // -------------------------- Title
+                    // -------------------------- Description
                     Text(
-                      'desc',
+                      widget.todo.description,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     )
+                    // -------------------------- Description
                   ],
                 ),
               )

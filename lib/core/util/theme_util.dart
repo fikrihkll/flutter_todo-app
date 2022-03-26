@@ -9,3 +9,4 @@ const TextStyle subtitle1 = TextStyle(fontSize: 10);
 
 const Color softGray = Color(0xfff1f1f1);
 const Color gray = Color(0xff909090);
+const Color darkGray = Color(0xff555555);

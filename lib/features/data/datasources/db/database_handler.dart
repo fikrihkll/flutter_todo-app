@@ -25,12 +25,12 @@ class DatabaseHandler{
           $_C_TITLE TEXT NOT NULL, 
           $_C_DESC TEXT NOT NULL, 
           $_C_DATE TEXT NOT NULL, 
-          $_C_HAS_DONE INTEGER NOT NULL,
-          )
+          $_C_HAS_DONE INTEGER NOT NULL
+          );
           ''',
         );
       },
-      version: 1,
+      version: 2,
     );
   }
 
@@ -46,6 +46,7 @@ class DatabaseHandler{
   Future<int> insertTodo(TodoModel todo) async {
     int result = 0;
     final Database db = await _getDatabase();
+
     // Insert TodoModel to database which model that has been converted to map
     result = await db.insert(_TABLE_TODO, TodoModel.toMap(todo));
     return result;
@@ -54,15 +55,22 @@ class DatabaseHandler{
   Future<int> updateTodo(TodoModel todo) async {
     int result = 0;
     final Database db = await _getDatabase();
+
     // Update TodoModel to database which model that has been converted to map
-    result = await db.update(_TABLE_TODO, TodoModel.toMap(todo));
+    result = await db.update(
+        _TABLE_TODO,
+        TodoModel.toMap(todo),
+        where: '$_C_ID = ?',
+        whereArgs: [todo.id]);
     return result;
   }
 
   Future<List<TodoModel>> getTodoList() async {
     final Database db = await _getDatabase();
+
     // Filter all to-do data from the has_done column that false and the closest date
-    final List<Map<String, dynamic>> queryResult = await db.rawQuery('SELECT * FROM $_TABLE_TODO ORDER BY $_C_HAS_DONE = 0, $_C_DATE ASC');
+    final List<Map<String, dynamic>> queryResult = await db.rawQuery('SELECT * FROM $_TABLE_TODO ORDER BY $_C_HAS_DONE = 1 ASC, $_C_DATE ASC');
+
     // Convert from map to model then will be converted to list
     return queryResult.map((e) => TodoModel.fromMap(e)).toList();
   }

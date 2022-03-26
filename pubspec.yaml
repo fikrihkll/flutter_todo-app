@@ -12,7 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  # for date format
+  intl: ^0.17.0
   # Value equality
   equatable: ^2.0.3
   # Apple' icons
