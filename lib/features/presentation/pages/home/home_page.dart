@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 16,),
                 const Text('What would you do now?',),
                 const SizedBox(height: 64, ),
-                Text('There are few things you must do today', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
+                Text('There are a few things you must do today', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
                 const SizedBox(height: 16,),
                 //------------------------- ListView
                 ListView.builder(
