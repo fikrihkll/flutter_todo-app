@@ -1,16 +1,12 @@
-# todo_app
+# Todo App
 
-A new Flutter project.
+Built with:
+- Clean Architecture
+- BloC state management
+- SQFlite
+- Unit Testing with Mocktail
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Waktu pengerjaan:
+26 Maret 2022
+- 16:15 - 19:00
+- 21:10 - 01:45
