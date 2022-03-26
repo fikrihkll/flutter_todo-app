@@ -30,3 +30,17 @@ class UnexpectedFailure extends Failure{
 
   List<Object?> get props => [message];
 }
+
+const unexpectedDefaultMessage = 'There is something wrong, please report this issue, thank you :)';
+
+String getErrorMessage(Failure failure){
+  if(failure is ServerFailure){
+    return failure.message;
+  }else if(failure is CacheFailure){
+    return failure.message;
+  }else if(failure is UnexpectedFailure){
+    return unexpectedDefaultMessage;
+  }else{
+    return unexpectedDefaultMessage;
+  }
+}
