@@ -37,6 +37,12 @@ workflows:
         echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
       - flutter packages pub get
       - flutter test
+      - echo 'previous step'
+          - name: Unit tests
+          script: |
+            mkdir -p test-results
+            flutter test --machine > test-results/flutter.json
+          test_report: test-results/flutter.json
       - flutter build apk --release
       - find . -name "Podfile" -execdir pod install \;
       - flutter build ios --release --no-codesign
