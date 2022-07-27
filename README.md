@@ -1,3 +1,4 @@
+[![Codemagic build status](https://api.codemagic.io/apps/624964ad974285f7b2f96ddd/624964ad974285f7b2f96ddc/status_badge.svg)](https://codemagic.io/apps/624964ad974285f7b2f96ddd/624964ad974285f7b2f96ddc/latest_build)
 # Todo App
 
 Built with:
